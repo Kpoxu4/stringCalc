@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 
 Calculate calc = new Calculate();
 
+
 while (true)
 {
     Console.Clear();
@@ -11,13 +12,20 @@ while (true)
     if (stringOperation.Contains(' '))
         stringOperation = string.Join("", stringOperation.Split(' ').ToArray());
 
-    while (stringOperation.IndexOf('+') == 0)
-        stringOperation = stringOperation.TrimStart('+');
-
-    if (stringOperation != "")
+    if (stringOperation != "" && stringOperation.Length >= 3)
     {
+        var lastSimbol = stringOperation[stringOperation.Length - 1];
+        var firstSimbol = stringOperation[0];
+
         if (calc.CheckingForCharacters(stringOperation))
         {
+
+            while (lastSimbol == '+' || lastSimbol == '-' || lastSimbol == '/' || lastSimbol == '*')
+            {
+                stringOperation = stringOperation.TrimEnd(lastSimbol);
+                lastSimbol = stringOperation[stringOperation.Length - 1];
+            }
+
             if (stringOperation.Contains('(') && stringOperation.Contains(')'))
             {
                 int countSimvol1 = new Regex("\\(").Matches(stringOperation).Count;
@@ -36,12 +44,12 @@ while (true)
                 calc.Info($"{stringOperation} = {calc.Solution(stringOperation)}");
             }
         }
-        else 
+        else
         {
             calc.Info("неверное выражение");
         }
     }
-    else 
+    else
         calc.Info("надо ввести выражение");
     if (Console.ReadKey().Key == ConsoleKey.Escape)
         break;

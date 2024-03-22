@@ -1,8 +1,4 @@
-﻿using System.Linq.Expressions;
-using System.Text;
-using System.Text.RegularExpressions;
-
-namespace Calc
+﻿namespace Calc
 {
     public class Calculate
     {
@@ -27,17 +23,21 @@ namespace Calc
                 char c = expression[i];
                 if (c == '/' || c == '-' || c == '+' || c == '*' || c == '(' || c == ')' || Char.IsDigit(c))
                 {
-                    answer =  true;
-                    break;
+                    answer = true;
+
                 }
                 else
+                {
                     answer = false;
+                    break;
+                }
+                    
             }
 
             return answer;
         }
 
-        public double Solution(string expression) 
+        public double Solution(string expression)
         {
             string doubleOpertIntoSingleOpert = DoubleOpertIntoSingleOpert(expression);
             string preparingString = PreparingString(doubleOpertIntoSingleOpert);
@@ -90,7 +90,7 @@ namespace Calc
                     current += expression[i];
                 if (priority == 1)
                     stack.Push(expression[i].ToString());
-                if (priority > 1) 
+                if (priority > 1)
                 {
                     current += ' ';
                     while (stack.Count != 0)
@@ -149,7 +149,7 @@ namespace Calc
                     double a = stack.Pop();
                     double b = stack.Pop();
 
-                    if(rpn[i] == '+')
+                    if (rpn[i] == '+')
                         stack.Push(b + a);
                     if (rpn[i] == '-')
                         stack.Push(b - a);
@@ -164,7 +164,7 @@ namespace Calc
             return stack.Pop();
         }
 
-        private  int GetPriority(char tokin)
+        private int GetPriority(char tokin)
         {
             switch (tokin)
             {
@@ -178,7 +178,7 @@ namespace Calc
                     return 1;
                 case ')':
                     return -1;
-               default: return 0; 
+                default: return 0;
             }
         }
     }
