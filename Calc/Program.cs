@@ -11,27 +11,35 @@ while (true)
     if (stringOperation.Contains(' '))
         stringOperation = string.Join("", stringOperation.Split(' ').ToArray());
 
+    while (stringOperation.IndexOf('+') == 0)
+        stringOperation = stringOperation.TrimStart('+');
+
     if (stringOperation != "")
     {
-
-        if (stringOperation.Contains('(') && stringOperation.Contains(')'))
+        if (calc.CheckingForCharacters(stringOperation))
         {
-            int countSimvol1 = new Regex("\\(").Matches(stringOperation).Count;
-            int countSimvol2 = new Regex("\\)").Matches(stringOperation).Count;
-            if (countSimvol1 == countSimvol2 && stringOperation.IndexOf('(') < stringOperation.IndexOf(')'))
+            if (stringOperation.Contains('(') && stringOperation.Contains(')'))
             {
-                calc.Info($"{stringOperation} = {calc.Solution(stringOperation)}");
+                int countSimvol1 = new Regex("\\(").Matches(stringOperation).Count;
+                int countSimvol2 = new Regex("\\)").Matches(stringOperation).Count;
+                if (countSimvol1 == countSimvol2 && stringOperation.IndexOf('(') < stringOperation.IndexOf(')'))
+                {
+                    calc.Info($"{stringOperation} = {calc.Solution(stringOperation)}");
+                }
+                else
+                {
+                    calc.Info("не верное количество скобок");
+                }
             }
             else
             {
-                calc.Info("не верное количество скобок");
+                calc.Info($"{stringOperation} = {calc.Solution(stringOperation)}");
             }
         }
-        else
+        else 
         {
-            calc.Info($"{stringOperation} = {calc.Solution(stringOperation)}");
+            calc.Info("неверное выражение");
         }
-        
     }
     else 
         calc.Info("надо ввести выражение");

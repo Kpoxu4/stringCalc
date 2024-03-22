@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Linq.Expressions;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Calc
@@ -18,6 +19,23 @@ namespace Calc
                 "что бы выйти нажми ESC");
         }
 
+        public bool CheckingForCharacters(string expression)
+        {
+            bool answer = true;
+            for (int i = 0; i < expression.Length; i++)
+            {
+                char c = expression[i];
+                if (c != '/' || c != '-' || c != '+' || c != '*' || c != '(' || c != ')' || !(int.TryParse(c.ToString(), out var result)))
+                {
+                    answer =  false;
+                    break;
+                }
+                else
+                    answer = true;
+            }
+
+            return answer;
+        }
 
         public double Solution(string expression) 
         {
@@ -26,6 +44,7 @@ namespace Calc
             string rpn = DoRpn(preparingString);
             return Answer(rpn);
         }
+
         private string DoubleOpertIntoSingleOpert(string expression)
         {
             while (expression.Contains("++") || expression.Contains("--") || expression.Contains("-+") || expression.Contains("+-"))
@@ -37,6 +56,7 @@ namespace Calc
             }
             return expression;
         }
+
         private string PreparingString(string expression)
         {
             string preparingString = "";
