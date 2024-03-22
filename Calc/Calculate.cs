@@ -10,6 +10,7 @@ namespace Calc
             Console.WriteLine("Калькулятор простых действий\n" +
                 "Пример ввода (2+3)+4+6");
         }
+
         public void Info(string info)
         {
             Console.WriteLine(info);
@@ -23,7 +24,7 @@ namespace Calc
             for (int i = 0; i < expression.Length; i++)
             {
                 char c = expression[i];
-                if (c == '/' || c == '-' || c == '+' || c == '*' || c == '(' || c == ')' || Char.IsDigit(c))
+                if (c == '/' || c == '-' || c == '+' || c == '*' || c == '(' || c == ')' || Char.IsDigit(c) || c == '.' || c == ',')
                 {
                     answer = true;
 
@@ -81,6 +82,7 @@ namespace Calc
 
         private string DoRpn(string expression)
         {
+
             string current = "";
             Stack<string> stack = new Stack<string>();
             int priority;
