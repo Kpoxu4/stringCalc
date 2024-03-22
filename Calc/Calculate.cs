@@ -6,7 +6,47 @@ namespace Calc
     public class Calculate
     {
 
-        public static string ExpressionToRPN(string expression)
+        public void Info()
+        {
+            Console.WriteLine("Калькулятор простых действий\n" +
+                "Пример ввода (2+3)+4+6");
+        }
+        public void Info(string info)
+        {
+            Console.WriteLine(info);
+            Console.WriteLine("Для продолжения нажмите любую клавишу\n" +
+                "что бы выйти нажми ESC");
+        }
+
+
+        public double Solution(string expression) 
+        {
+            string preparingString = PreparingString(expression);
+            string rpn = DoRpn(preparingString);
+            return Answer(rpn);
+        }
+
+        private string PreparingString(string expression)
+        {
+            string preparingString = "";
+            for (int i = 0; i < expression.Length; i++)
+            {
+                char simbol = expression[i];
+                if (simbol == '-')
+                {
+                    if (i == 0)
+                        preparingString += '0';
+                    else if (expression[i - 1] == '(')
+                        preparingString += '0';
+                }
+                preparingString += simbol;
+
+            }
+
+            return preparingString;
+        }
+
+        private string DoRpn(string expression)
         {
             string current = "";
             Stack<string> stack = new Stack<string>();
@@ -49,7 +89,7 @@ namespace Calc
             return current;
         }
 
-        public static double RPNtoAnswer(string rpn)
+        private double Answer(string rpn)
         {
             string operand = "";
             Stack<Double> stack = new Stack<Double>();
@@ -93,7 +133,7 @@ namespace Calc
             return stack.Pop();
         }
 
-        private static int GetPriority(char tokin)
+        private  int GetPriority(char tokin)
         {
             switch (tokin)
             {
