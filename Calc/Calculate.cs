@@ -1,4 +1,6 @@
-﻿namespace Calc
+﻿using System.Reflection.Metadata;
+
+namespace Calc
 {
     public class Calculate
     {
@@ -148,16 +150,37 @@
                 {
                     double a = stack.Pop();
                     double b = stack.Pop();
+                    switch (rpn[i])
+                    {
 
-                    if (rpn[i] == '+')
-                        stack.Push(b + a);
-                    if (rpn[i] == '-')
-                        stack.Push(b - a);
-                    if (rpn[i] == '*')
-                        stack.Push(b * a);
-                    if (rpn[i] == '/')
-                        stack.Push(b / a);
+                        case '+':
+                            stack.Push(b + a);
+                            break;
+                        case '-':
+                            stack.Push(b - a);
+                            break;
+                        case '*':
+                            stack.Push(b * a);
+                            break;
+                        case '/':
+                            try
+                            {
+                                if (a == 0)
+                                    throw new DivideByZeroException("попытка деления на ноль");
+                                else
+                                {
+                                    stack.Push(b / a);
+                                    break;
+                                }
 
+                            }
+                            catch (DivideByZeroException)
+                            {
+                                    stack.Clear();
+                                Console.WriteLine("делить на 0 нельзя");
+                                return 0;
+                            }
+                    }
                 }
             }
 

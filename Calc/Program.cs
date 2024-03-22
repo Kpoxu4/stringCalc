@@ -32,6 +32,7 @@ while (true)
                 int countSimvol2 = new Regex("\\)").Matches(stringOperation).Count;
                 if (countSimvol1 == countSimvol2 && stringOperation.IndexOf('(') < stringOperation.IndexOf(')'))
                 {
+                    
                     calc.Info($"{stringOperation} = {calc.Solution(stringOperation)}");
                 }
                 else
@@ -41,6 +42,7 @@ while (true)
             }
             else
             {
+                
                 calc.Info($"{stringOperation} = {calc.Solution(stringOperation)}");
             }
         }
@@ -50,7 +52,8 @@ while (true)
         }
     }
     else
-        calc.Info("надо ввести выражение");
+        calc.Info($"надо ввести выражение");
+    
     if (Console.ReadKey().Key == ConsoleKey.Escape)
         break;
 
