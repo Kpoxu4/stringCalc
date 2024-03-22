@@ -25,13 +25,13 @@ namespace Calc
             for (int i = 0; i < expression.Length; i++)
             {
                 char c = expression[i];
-                if (c != '/' || c != '-' || c != '+' || c != '*' || c != '(' || c != ')' || !(int.TryParse(c.ToString(), out var result)))
+                if (c == '/' || c == '-' || c == '+' || c == '*' || c == '(' || c == ')' || Char.IsDigit(c))
                 {
-                    answer =  false;
+                    answer =  true;
                     break;
                 }
                 else
-                    answer = true;
+                    answer = false;
             }
 
             return answer;
