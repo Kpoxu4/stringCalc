@@ -16,8 +16,8 @@ while (true)
     {
         var lastSimbol = stringOperation[stringOperation.Length - 1];
         var firstSimbol = stringOperation[0];
-
-        if (calc.CheckingForCharacters(stringOperation))
+        
+        if (calc.CheckingForCharacters(stringOperation) && firstSimbol != '/' && firstSimbol != '*')
         {
 
             while (lastSimbol == '+' || lastSimbol == '-' || lastSimbol == '/' || lastSimbol == '*')
@@ -48,7 +48,7 @@ while (true)
         }
         else
         {
-            calc.Info("неверное выражение");
+            calc.Info("неверное выражение, внимательней");
         }
     }
     else
