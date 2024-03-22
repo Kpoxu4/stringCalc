@@ -10,8 +10,10 @@ while (true)
     string stringOperation = Console.ReadLine();
     if (stringOperation.Contains(' '))
         stringOperation = string.Join("", stringOperation.Split(' ').ToArray());
+
     if (stringOperation != "")
     {
+
         if (stringOperation.Contains('(') && stringOperation.Contains(')'))
         {
             int countSimvol1 = new Regex("\\(").Matches(stringOperation).Count;

@@ -21,11 +21,22 @@ namespace Calc
 
         public double Solution(string expression) 
         {
-            string preparingString = PreparingString(expression);
+            string doubleOpertIntoSingleOpert = DoubleOpertIntoSingleOpert(expression);
+            string preparingString = PreparingString(doubleOpertIntoSingleOpert);
             string rpn = DoRpn(preparingString);
             return Answer(rpn);
         }
-
+        private string DoubleOpertIntoSingleOpert(string expression)
+        {
+            while (expression.Contains("++") || expression.Contains("--") || expression.Contains("-+") || expression.Contains("+-"))
+            {
+                expression = expression.Replace("--", "+");
+                expression = expression.Replace("-+", "-");
+                expression = expression.Replace("+-", "-");
+                expression = expression.Replace("++", "+");
+            }
+            return expression;
+        }
         private string PreparingString(string expression)
         {
             string preparingString = "";
