@@ -122,7 +122,6 @@ namespace Calc
                     double b = stack.Pop();
                     switch (rpn[i])
                     {
-
                         case '+':
                             stack.Push(b + a);
                             break;
@@ -153,7 +152,6 @@ namespace Calc
                     }
                 }
             }
-
             return stack.Pop();
         }
 

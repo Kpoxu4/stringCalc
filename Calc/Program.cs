@@ -13,12 +13,13 @@ while (true)
     if (stringOperation.Contains(' '))
         stringOperation = string.Join("", stringOperation.Split(' ').ToArray());
 
-    if (stringOperation != "" && stringOperation.Length >= 3)
+    if (stringOperation.Contains('.'))
+        Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+    else
+        Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("Ru");
+
+    if (stringOperation != "" && stringOperation.Length >= 3 && cheacking.CheackinOneNumber(stringOperation))
     {
-        if (stringOperation.Contains('.'))
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-        else
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("Ru");
 
         var lastSimbol = stringOperation[stringOperation.Length - 1];
         var firstSimbol = stringOperation[0];

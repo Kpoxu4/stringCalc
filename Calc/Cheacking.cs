@@ -89,5 +89,15 @@ namespace Calc
 
             return cheackinDuobleWrongOp;
         }
+
+        public bool CheackinOneNumber(string expression)
+        {
+            var cheackinOneNumber = true;
+            if (double.TryParse(expression, out var result))
+            {
+                cheackinOneNumber = false;
+            }
+            return cheackinOneNumber;
+        }
     }
 }
