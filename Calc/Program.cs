@@ -23,7 +23,7 @@ while (true)
         var lastSimbol = stringOperation[stringOperation.Length - 1];
         var firstSimbol = stringOperation[0];
 
-        if (cheacking.CheckingForCharacters(stringOperation) && firstSimbol != '/' && firstSimbol != '*')
+        if (cheacking.CheckingForCharacters(stringOperation) && firstSimbol != '/' && firstSimbol != '*' && cheacking.CheackinDuobleWrongOp(stringOperation))
         {
 
             while (lastSimbol == '+' || lastSimbol == '-' || lastSimbol == '/' || lastSimbol == '*')

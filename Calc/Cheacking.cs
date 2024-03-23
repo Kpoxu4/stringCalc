@@ -73,5 +73,18 @@ namespace Calc
                 cheackingBrackets = false;
             return cheackingBrackets;
         }
+
+        public bool CheackinDuobleWrongOp(string expression)
+        {
+            var cheackinDuobleWrongOp = true;
+
+            if (expression.Contains("-/") || expression.Contains("/-") || expression.Contains("+/") || expression.Contains("/+") ||
+               expression.Contains("*/") || expression.Contains("/*") || expression.Contains("-*") || expression.Contains("+*") ||
+               expression.Contains("*-") || expression.Contains("*+"))
+                cheackinDuobleWrongOp = false;
+
+
+            return cheackinDuobleWrongOp;
+        }
     }
 }
