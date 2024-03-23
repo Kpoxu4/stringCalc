@@ -1,10 +1,8 @@
-﻿using System.Text.RegularExpressions;
-
-namespace Calc
+﻿namespace Calc
 {
     public class Calculate
     {
- 
+
         public double Solution(string expression)
         {
             string doubleOpertIntoSingleOpert = DoubleOpertIntoSingleOpert(expression);
@@ -22,7 +20,7 @@ namespace Calc
                 expression = expression.Replace("+-", "-");
                 expression = expression.Replace("++", "+");
             }
-            if (expression[0] ==  '+')
+            if (expression[0] == '+')
                 expression = expression.TrimStart('+');
 
             return expression;
