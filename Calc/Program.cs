@@ -38,7 +38,7 @@ while (true)
                 if (cheacking.CheackingBrackets(stringOperation))
                 {
 
-                    information.Info($"{stringOperation} = {calc.Solution(stringOperation)}");
+                    information.Info($"{stringOperation} = {Math.Round(calc.Solution(stringOperation), 3, MidpointRounding.ToEven)}");
                 }
                 else
                 {
@@ -47,8 +47,7 @@ while (true)
             }
             else
             {
-
-                information.Info($"{stringOperation} = {calc.Solution(stringOperation)}");
+                information.Info($"{stringOperation} = {Math.Round(calc.Solution(stringOperation), 3, MidpointRounding.ToEven)}");
             }
         }
         else

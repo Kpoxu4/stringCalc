@@ -25,9 +25,7 @@ namespace Calc
                     answer = false;
                     break;
                 }
-
             }
-
             return answer;
         }
 
@@ -39,7 +37,6 @@ namespace Calc
 
             if (countSimvol1 == countSimvol2 && expression.IndexOf('(') < expression.IndexOf(')'))
             {
-
                 for (int i = 0; i < expression.Length; i++)
                 {
                     char c = expression[i];
@@ -52,11 +49,9 @@ namespace Calc
                                 cheackingBrackets = false;
                                 break;
                             }
-                                
                             else
                                 cheackingBrackets = true;
                         }
-
                         if (c == ')')
                         {
                             if (Char.IsDigit(expression[i + 1]) || !(Char.IsDigit(expression[i - 1])))
@@ -64,7 +59,6 @@ namespace Calc
                                 cheackingBrackets = false;
                                 break;
                             }
-                                
                             else
                                 cheackingBrackets = true;
                         }
@@ -77,9 +71,7 @@ namespace Calc
             }
             else
                 cheackingBrackets = false;
-
             return cheackingBrackets;
         }
-        
     }
 }
