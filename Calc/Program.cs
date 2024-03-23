@@ -1,5 +1,4 @@
 ﻿using Calc;
-using System.Text.RegularExpressions;
 
 Calculate calc = new Calculate();
 
@@ -21,7 +20,7 @@ while (true)
 
         var lastSimbol = stringOperation[stringOperation.Length - 1];
         var firstSimbol = stringOperation[0];
-        
+
         if (calc.CheckingForCharacters(stringOperation) && firstSimbol != '/' && firstSimbol != '*')
         {
 
@@ -31,23 +30,22 @@ while (true)
                 lastSimbol = stringOperation[stringOperation.Length - 1];
             }
 
-            if (stringOperation.Contains('(') && stringOperation.Contains(')'))
+            if (stringOperation.Contains('('))
             {
-                int countSimvol1 = new Regex("\\(").Matches(stringOperation).Count;
-                int countSimvol2 = new Regex("\\)").Matches(stringOperation).Count;
-                if (countSimvol1 == countSimvol2 && stringOperation.IndexOf('(') < stringOperation.IndexOf(')'))
+
+                if (calc.CheackingBrackets(stringOperation))
                 {
-                    
+
                     calc.Info($"{stringOperation} = {calc.Solution(stringOperation)}");
                 }
                 else
                 {
-                    calc.Info("не верное количество скобок");
+                    calc.Info("формат записи не верный");
                 }
             }
             else
             {
-                
+
                 calc.Info($"{stringOperation} = {calc.Solution(stringOperation)}");
             }
         }
@@ -58,7 +56,7 @@ while (true)
     }
     else
         calc.Info($"надо ввести выражение");
-    
+
     if (Console.ReadKey().Key == ConsoleKey.Escape)
         break;
 
