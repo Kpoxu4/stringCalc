@@ -7,6 +7,7 @@ Information information = new Information();
 
 while (true)
 {
+
     Console.Clear();
     information.Info();
     string stringOperation = Console.ReadLine();
