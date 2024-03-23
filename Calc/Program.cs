@@ -1,6 +1,5 @@
 ﻿using Calc;
 
-
 Calculate calc = new Calculate();
 Cheacking cheacking = new Cheacking();
 Information information = new Information();
@@ -61,7 +60,6 @@ while (true)
 
     if (Console.ReadKey().Key == ConsoleKey.Escape)
         break;
-
 }
 
 

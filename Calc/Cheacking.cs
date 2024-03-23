@@ -13,7 +13,6 @@ namespace Calc
                 if (c == '/' || c == '-' || c == '+' || c == '*' || c == '(' || c == ')' || Char.IsDigit(c) || c == '.' || c == ',')
                 {
                     answer = true;
-
                 }
                 else
                 {
@@ -80,7 +79,6 @@ namespace Calc
                expression.Contains("*/") || expression.Contains("/*") || expression.Contains("-*") || expression.Contains("+*") ||
                expression.Contains("*-") || expression.Contains("*+"))
                 cheackinDuobleWrongOp = false;
-
 
             return cheackinDuobleWrongOp;
         }
