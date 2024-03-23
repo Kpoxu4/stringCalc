@@ -56,6 +56,9 @@ namespace Calc
                         {
                             if (Char.IsDigit(expression[i + 1]) || !(Char.IsDigit(expression[i - 1])))
                             {
+                                if (expression[i - 1] == ')')
+                                    continue;
+
                                 cheackingBrackets = false;
                                 break;
                             }
